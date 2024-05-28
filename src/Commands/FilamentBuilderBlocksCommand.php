@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace KLisica\FilamentBuilderBlocks\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentBuilderBlocksCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-builder-blocks';
 
     public $description = 'My command';
 
