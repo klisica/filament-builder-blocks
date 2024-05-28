@@ -2,9 +2,9 @@
 
 namespace KLisica\FilamentBuilderBlocks;
 
+use KLisica\FilamentBuilderBlocks\Commands\FilamentBuilderBlocksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use KLisica\FilamentBuilderBlocks\Commands\FilamentBuilderBlocksCommand;
 
 class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
 {
