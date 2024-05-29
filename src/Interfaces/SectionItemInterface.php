@@ -20,6 +20,5 @@ interface SectionItemInterface
     public function getFieldset(): Fieldset;
 
     // Preview URL on Flowbite page.
-    public function getPreviewLink(): Placeholder | null;
+    public function getPreviewLink(): ?Placeholder;
 }
-

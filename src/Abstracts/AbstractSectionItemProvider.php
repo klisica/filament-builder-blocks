@@ -30,15 +30,15 @@ class AbstractSectionItemProvider extends AbstractSectionProvider implements Sec
     }
 
     // Preview URL on Flowbite page.
-    public function getPreviewLink(): Placeholder | null
+    public function getPreviewLink(): ?Placeholder
     {
         return $this->previewUrl
             ? Placeholder::make('preview')->hiddenLabel()
                 ->content(function () {
                     $url = $this->previewUrl;
-                    return new HtmlString('<a href="' . $url . '" target="_blank"><u>Show Component</u></a>');
+
+                    return new HtmlString('<a href="'.$url.'" target="_blank"><u>Show Component</u></a>');
                 })
             : null;
     }
 }
-

@@ -13,8 +13,8 @@ class BuilderBlocksInput extends Builder
     /**
      * Retrieves the sections based on the given configuration key and sets the correct component order.
      *
-     * @param string|null $configKey The configuration key to retrieve the sections. Defaults to null.
-     * @param bool|null $withYieldSection Whether to yield the sections. Defaults to false.
+     * @param  string|null  $configKey  The configuration key to retrieve the sections. Defaults to null.
+     * @param  bool|null  $withYieldSection  Whether to yield the sections. Defaults to false.
      * @return Builder The Builder instance with the assigned block elements.
      */
     public function sections(?string $configKey = null, ?bool $withYieldSection = false): Builder
@@ -27,7 +27,9 @@ class BuilderBlocksInput extends Builder
         foreach ($classes as $class) {
             $reflectionClass = new ReflectionClass($class);
 
-            if (!$reflectionClass->isInstantiable()) { continue; }
+            if (! $reflectionClass->isInstantiable()) {
+                continue;
+            }
 
             $instance = $reflectionClass->newInstance();
 
@@ -48,8 +50,8 @@ class BuilderBlocksInput extends Builder
                     ->label('⭐ Yield Section')
                     ->disabled()
                     ->schema([
-                        Placeholder::make('yield')->label('Here is where your nested sections will be displayed.')
-                    ])
+                        Placeholder::make('yield')->label('Here is where your nested sections will be displayed.'),
+                    ]),
             ]);
         }
 
@@ -67,13 +69,13 @@ class BuilderBlocksInput extends Builder
     private function getConfig(): array
     {
         return config("filament-builder-blocks.$this->configKey")
-            ?? [ 'sections' => __DIR__ . '/../Sections' ];
+            ?? ['sections' => __DIR__.'/../Sections'];
     }
 
     /**
      * Retrieves the class name from a given file.
      *
-     * @param string $file The path to the file.
+     * @param  string  $file  The path to the file.
      * @return string The fully qualified class name.
      */
     private function getClassNameFromFile($file)
@@ -82,7 +84,7 @@ class BuilderBlocksInput extends Builder
         $namespace = '';
 
         if (preg_match('/namespace\s+([^;]+);/', $contents, $matches)) {
-            $namespace = $matches[1] . '\\';
+            $namespace = $matches[1].'\\';
         }
 
         $class = '';
@@ -91,24 +93,24 @@ class BuilderBlocksInput extends Builder
             $class = $matches[1];
         }
 
-        return $namespace . $class;
+        return $namespace.$class;
     }
 
     /**
      * Retrieves the classes of the section files based on the given configuration key.
      *
-     * @param string|null $configKey The configuration key to retrieve the section classes. Defaults to null.
+     * @param  string|null  $configKey  The configuration key to retrieve the section classes. Defaults to null.
      * @return array The array of class names of the section files.
      */
     private function getSectionClasses(?string $configKey = null)
     {
         $directory = $this->getConfig()['sections'];
 
-        if (!is_dir($directory)) {
+        if (! is_dir($directory)) {
             return [];
         }
 
-        $files = glob($directory . '/*.php');
+        $files = glob($directory.'/*.php');
         $classes = [];
 
         foreach ($files as $file) {

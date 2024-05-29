@@ -18,5 +18,3 @@ class Hero extends AbstractSectionProvider
         ];
     }
 }
-
-

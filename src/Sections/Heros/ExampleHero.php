@@ -34,8 +34,7 @@ class ExampleHero extends AbstractSectionItemProvider
                 TextInput::make('content.heading')
                     ->placeholder('Write hero heading here...')
                     ->required()
-                    ->maxLength(255)
+                    ->maxLength(255),
             ]);
     }
 }
-

@@ -2,12 +2,11 @@
 
 namespace KLisica\FilamentBuilderBlocks\Abstracts;
 
-use KLisica\FilamentBuilderBlocks\Interfaces\SectionBlockInterface;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Get;
+use KLisica\FilamentBuilderBlocks\Interfaces\SectionBlockInterface;
 
 class AbstractSectionProvider implements SectionBlockInterface
 {
@@ -68,12 +67,11 @@ class AbstractSectionProvider implements SectionBlockInterface
 
                 // Dynamically import each component registered for this provider.
                 ...$components
-                    ->map(fn ($component) =>
-                        $component
-                            ->getFieldset()
-                            ->visible(fn (Get $get): bool => $get('block.view_key') == $component->getView()),
+                    ->map(fn ($component) => $component
+                        ->getFieldset()
+                        ->visible(fn (Get $get): bool => $get('block.view_key') == $component->getView()),
                     )
-                    ->toArray()
+                    ->toArray(),
             ]);
     }
 }
