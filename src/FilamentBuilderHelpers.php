@@ -23,8 +23,7 @@ class FilamentBuilderHelpers
         }
 
         $inst = new $className();
-        $sectionData = array_merge(@$section['data']['content'] ?? [], $configs ?? []);
-
+        $sectionData = array_merge(@$section['data']['content'] ?? [], $configs);
         return view($inst->getView(), $sectionData)->render();
     }
 
@@ -65,7 +64,7 @@ class FilamentBuilderHelpers
                     $this->getInputsFromComponent($child)
                 );
             }
-        } else {
+        } else if (method_exists($component, 'getName')) {
             $inputs[] = $component->getName();
         }
 
@@ -132,7 +131,8 @@ class FilamentBuilderHelpers
             // Process each part of the key
             foreach ($keys as $part) {
                 // If the key part doesn't exist at this depth, create an array to hold further values
-                if (! isset($temp[$part])) {
+                // @phpstan-ignore-next-line
+                if (!isset($temp[$part])) {
                     $temp[$part] = [];
                 }
                 // Move the reference deeper into the array

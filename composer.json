@@ -35,13 +35,11 @@
     },
     "autoload": {
         "psr-4": {
-            "KLisica\\FilamentBuilderBlocks\\": "src/",
-            "KLisica\\FilamentBuilderBlocks\\Database\\Factories\\": "database/factories/"
+            "KLisica\\FilamentBuilderBlocks\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "KLisica\\FilamentBuilderBlocks\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
