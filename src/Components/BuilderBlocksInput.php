@@ -66,7 +66,7 @@ class BuilderBlocksInput extends Builder
      */
     private function getConfig(): array
     {
-        return config('filament-builder-blocks. ', $this->configKey)
+        return config("filament-builder-blocks.$this->configKey")
             ?? [ 'sections' => __DIR__ . '/../Sections' ];
     }
 
