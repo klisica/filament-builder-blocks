@@ -11,7 +11,7 @@ class ExampleHero extends AbstractSectionItemProvider
 {
     public function __construct()
     {
-        $this->view = 'heros.basic';
+        $this->view = 'filament-builder-blocks::heros.example';
         $this->name = 'Basic Hero';
         $this->previewUrl = 'https://flowbite.com/blocks/marketing/hero/#default-hero-section';
     }

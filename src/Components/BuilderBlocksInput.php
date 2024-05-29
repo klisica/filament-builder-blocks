@@ -3,6 +3,7 @@
 namespace KLisica\FilamentBuilderBlocks\Components;
 
 use Filament\Forms\Components\Builder;
+use Filament\Forms\Components\Placeholder;
 use ReflectionClass;
 
 class BuilderBlocksInput extends Builder
@@ -13,9 +14,10 @@ class BuilderBlocksInput extends Builder
      * Retrieves the sections based on the given configuration key and sets the correct component order.
      *
      * @param string|null $configKey The configuration key to retrieve the sections. Defaults to null.
+     * @param bool|null $withYieldSection Whether to yield the sections. Defaults to false.
      * @return Builder The Builder instance with the assigned block elements.
      */
-    public function sections(?string $configKey = null): Builder
+    public function sections(?string $configKey = null, ?bool $withYieldSection = false): Builder
     {
         $this->configKey = $configKey;
 
@@ -37,8 +39,22 @@ class BuilderBlocksInput extends Builder
         // Set correct component order.
         usort($componentInstances, fn ($a, $b) => $a->getOrder() <=> $b->getOrder());
 
+        $blocks = array_map(fn ($instance) => $instance->getSectionItems(), $componentInstances);
+
+        // Assign readonly yield block section.
+        if ($withYieldSection) {
+            $blocks = array_merge($blocks, [
+                Builder\Block::make('yield')
+                    ->label('⭐ Yield Section')
+                    ->disabled()
+                    ->schema([
+                        Placeholder::make('yield')->label('Here is where your nested sections will be displayed.')
+                    ])
+            ]);
+        }
+
         // Assign block elements.
-        $this->blocks(array_map(fn ($instance) => $instance->getSectionItems(), $componentInstances));
+        $this->blocks($blocks);
 
         return $this;
     }
