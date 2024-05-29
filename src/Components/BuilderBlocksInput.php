@@ -88,7 +88,6 @@ class BuilderBlocksInput extends Builder
     /**
      * Retrieves the classes of the section files based on the given configuration key.
      *
-     * @param  string|null  $sectionsPath  The configuration key to retrieve the section classes. Defaults to null.
      * @return array The array of class names of the section files.
      */
     private function getSectionClasses()
