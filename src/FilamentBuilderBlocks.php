@@ -18,7 +18,7 @@ class FilamentBuilderBlocks
      * and returns the result of calling the `make`, `sections`, and `columnSpanFull` methods on it.
      *
      * @param  string  $name  The name of the BuilderBlocksInput instance.
-     * @param  string|null  $sections  The sections to be passed to the `sections` method. Defaults to null.
+     * @param  string|null  $sections  The sections path to be passed to the `sections` method. Defaults to null.
      * @param  string|null  $addActionLabel  Button text for adding another section to the block. Defaults to null.
      * @param  bool|null  $withYieldSection  Whether to yield the section view. Defaults to false.
      * @return mixed The result of calling the `make`, `sections`, and `columnSpanFull` methods on the BuilderBlocksInput instance.
@@ -28,7 +28,7 @@ class FilamentBuilderBlocks
         $builderInput = new BuilderBlocksInput($name);
 
         return $builderInput->make($name)
-            ->sections(configKey: $sections, withYieldSection: $withYieldSection) // Plugin block components.
+            ->sections(sectionsPath: $sections, withYieldSection: $withYieldSection) // Plugin block components.
             ->columnSpanFull()
             ->hiddenLabel()
             ->blockNumbers(true)

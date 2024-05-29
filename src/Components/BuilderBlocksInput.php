@@ -8,18 +8,18 @@ use ReflectionClass;
 
 class BuilderBlocksInput extends Builder
 {
-    private $configKey;
+    private $sectionsPath;
 
     /**
      * Retrieves the sections based on the given configuration key and sets the correct component order.
      *
-     * @param  string|null  $configKey  The configuration key to retrieve the sections. Defaults to null.
+     * @param  string|null  $sectionsPath  The configuration key to retrieve the sections. Defaults to null.
      * @param  bool|null  $withYieldSection  Whether to yield the sections. Defaults to false.
      * @return Builder The Builder instance with the assigned block elements.
      */
-    public function sections(?string $configKey = null, ?bool $withYieldSection = false): Builder
+    public function sections(?string $sectionsPath = null, ?bool $withYieldSection = false): Builder
     {
-        $this->configKey = $configKey;
+        $this->sectionsPath = $sectionsPath;
 
         $componentInstances = [];
         $classes = $this->getSectionClasses();
@@ -62,17 +62,6 @@ class BuilderBlocksInput extends Builder
     }
 
     /**
-     * Retrieves the configuration for the 'filament-builder-blocks' package.
-     *
-     * @return array The configuration array for the 'filament-builder-blocks' package.
-     */
-    private function getConfig(): array
-    {
-        return config("filament-builder-blocks.$this->configKey")
-            ?? ['sections' => __DIR__.'/../Sections'];
-    }
-
-    /**
      * Retrieves the class name from a given file.
      *
      * @param  string  $file  The path to the file.
@@ -99,12 +88,12 @@ class BuilderBlocksInput extends Builder
     /**
      * Retrieves the classes of the section files based on the given configuration key.
      *
-     * @param  string|null  $configKey  The configuration key to retrieve the section classes. Defaults to null.
+     * @param  string|null  $sectionsPath  The configuration key to retrieve the section classes. Defaults to null.
      * @return array The array of class names of the section files.
      */
-    private function getSectionClasses(?string $configKey = null)
+    private function getSectionClasses()
     {
-        $directory = $this->getConfig()['sections'];
+        $directory = $this->sectionsPath ?? __DIR__.'/../Sections';
 
         if (! is_dir($directory)) {
             return [];

@@ -2,7 +2,6 @@
 
 namespace KLisica\FilamentBuilderBlocks;
 
-use KLisica\FilamentBuilderBlocks\Commands\FilamentBuilderBlocksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,9 +15,6 @@ class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('filament-builder-blocks')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasCommand(FilamentBuilderBlocksCommand::class);
+            ->name('filament-builder-blocks');
     }
 }
