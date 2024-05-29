@@ -38,6 +38,35 @@ class FilamentBuilderBlocks
     }
 
     /**
+     * Cleans up the inputs in the provided data array by filtering and expanding content based on class path.
+     *
+     * @param array $data The data array containing content to be cleaned up.
+     * @return array The cleaned up data array.
+     */
+    public function cleanup(array $data): array
+    {
+        $contentData = @$data['content'] ?? [];
+
+        foreach ($contentData as $index => $content) {
+            if ($content['type'] == 'yield') {
+                continue;
+            }
+
+            $className = @$content['data']['block']['class_path'] ?? '';
+            if (!class_exists($className)) {  continue; }
+
+            $inst = new $className();
+
+            $data['content'][$index]['data']['content'] = $this->helper->getCleanInputs(
+                $inst->getFieldset(),
+                $content['data']['content']
+            );
+        }
+
+        return $data;
+    }
+
+    /**
      * Renders the given sections and wrapping sections into HTML components.
      *
      * @param array $sections The sections to be rendered. Each section should have a 'data' key with a 'block' key
