@@ -41,7 +41,7 @@ class AbstractSectionProvider implements SectionBlockInterface
         return $this->order;
     }
 
-    public function getBlocks(): Builder\Block
+    public function getSectionItems(): Builder\Block
     {
         $components = collect($this->components);
 
@@ -77,29 +77,3 @@ class AbstractSectionProvider implements SectionBlockInterface
             ]);
     }
 }
-
-
-/*<?php
-
-namespace App\Blocks\Providers;
-
-use App\Blocks\AbstractBlockProvider;
-
-class Hero extends AbstractBlockProvider
-{
-    public function __construct()
-    {
-        $this->key = 'hero';
-        $this->name = 'Hero';
-        $this->icon = 'polaris-image-with-text-overlay-icon';
-        $this->order = 2;
-
-        $this->components = [
-            new \App\Blocks\Providers\Heros\BasicHero,
-            new \App\Blocks\Providers\Heros\TextWithImage,
-            new \App\Blocks\Providers\Heros\TextWithCarousel,
-            new \App\Blocks\Providers\Heros\FullPageCarousel,
-        ];
-    }
-}*/
-

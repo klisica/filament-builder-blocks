@@ -2,13 +2,12 @@
 
 namespace KLisica\FilamentBuilderBlocks\Abstracts;
 
-use App\Blocks\Interfaces\BlockComponentInterface;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Placeholder;
 use Illuminate\Support\HtmlString;
-use KLisica\FilamentBuilderBlocks\Interfaces\ComponentBlockInterface;
+use KLisica\FilamentBuilderBlocks\Interfaces\SectionItemInterface;
 
-class AbstractComponentProvider extends AbstractSectionProvider implements ComponentBlockInterface
+class AbstractSectionItemProvider extends AbstractSectionProvider implements SectionItemInterface
 {
     public string $view = '';
 

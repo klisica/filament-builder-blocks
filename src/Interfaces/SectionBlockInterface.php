@@ -19,6 +19,6 @@ interface SectionBlockInterface
     public function getOrder(): int;
 
     // Get builder block for Filament panel.
-    public function getBlocks(): Builder\Block;
+    public function getSectionItems(): Builder\Block;
 }
 

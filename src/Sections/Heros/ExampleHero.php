@@ -1,13 +1,13 @@
 <?php
 
-namespace KLisica\FilamentBuilderBlocks\Components\Heros;
+namespace KLisica\FilamentBuilderBlocks\Sections\Heros;
 
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use KLisica\FilamentBuilderBlocks\Abstracts\AbstractComponentProvider;
+use KLisica\FilamentBuilderBlocks\Abstracts\AbstractSectionItemProvider;
 
-class ExampleHero extends AbstractComponentProvider
+class ExampleHero extends AbstractSectionItemProvider
 {
     public function __construct()
     {

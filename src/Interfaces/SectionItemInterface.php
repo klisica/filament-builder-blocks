@@ -5,7 +5,7 @@ namespace KLisica\FilamentBuilderBlocks\Interfaces;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Placeholder;
 
-interface ComponentBlockInterface
+interface SectionItemInterface
 {
     // PHP file clas sname.
     public function getClassPath(): string;

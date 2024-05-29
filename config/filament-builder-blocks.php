@@ -4,6 +4,6 @@
 return [
     /* Add configs here */
     /*'basic' => [
-        'components' => base_path('src/Components')
+        'sections' => base_path('src/Sections')
     ]*/
 ];

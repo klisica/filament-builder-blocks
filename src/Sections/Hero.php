@@ -1,6 +1,6 @@
 <?php
 
-namespace KLisica\FilamentBuilderBlocks\Components;
+namespace KLisica\FilamentBuilderBlocks\Sections;
 
 use KLisica\FilamentBuilderBlocks\Abstracts\AbstractSectionProvider;
 
@@ -14,7 +14,7 @@ class Hero extends AbstractSectionProvider
         $this->order = 1;
 
         $this->components = [
-            new \KLisica\FilamentBuilderBlocks\Components\Heros\ExampleHero,
+            new \KLisica\FilamentBuilderBlocks\Sections\Heros\ExampleHero,
         ];
     }
 }
