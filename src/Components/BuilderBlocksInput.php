@@ -45,14 +45,14 @@ class BuilderBlocksInput extends Builder
 
         // Assign readonly yield block section.
         if ($withYieldSection) {
-            $blocks = array_merge($blocks, [
+            $blocks = array_merge([
                 Builder\Block::make('yield')
-                    ->label('⭐ Yield Section')
+                    ->label(__('filament-builder-blocks::translations.yield'))
                     ->disabled()
                     ->schema([
-                        Placeholder::make('yield')->label('Here is where your nested sections will be displayed.'),
+                        Placeholder::make('yield')->label(__('filament-builder-blocks::translations.yield_placeholder')),
                     ]),
-            ]);
+            ], $blocks);
         }
 
         // Assign block elements.

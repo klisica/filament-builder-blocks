@@ -15,6 +15,7 @@ class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('filament-builder-blocks');
+            ->name('filament-builder-blocks')
+            ->hasTranslations();
     }
 }
