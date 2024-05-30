@@ -36,9 +36,10 @@ class AbstractSectionItemProvider extends AbstractSectionProvider implements Sec
             ? Placeholder::make('preview')->hiddenLabel()
                 ->content(function () {
                     $url = $this->previewUrl;
+
                     return new HtmlString(
                         '<a href="'.$url.'" target="_blank">
-                            <u>' . __('filament-builder-blocks::translations.preview') . '</u>
+                            <u>'.__('filament-builder-blocks::translations.preview').'</u>
                         </a>'
                     );
                 })
