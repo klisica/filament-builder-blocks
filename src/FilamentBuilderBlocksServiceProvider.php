@@ -4,6 +4,7 @@ namespace KLisica\FilamentBuilderBlocks;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 
 class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
 {
@@ -17,6 +18,11 @@ class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
         $package
             ->name('filament-builder-blocks')
             ->hasConfigFile()
-            ->hasTranslations();
+            ->hasTranslations()
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->askToStarRepoOnGitHub('klisica/filament-builder-blocks');
+            });;
     }
 }
