@@ -14,58 +14,113 @@ Each section block uses his own **blade view file** (i.e. `default-header.blade.
 
 Another great helper functions that are ready-to-use:
 
-- `renderSections()` - Returns a fully formatted HTML code for each section,
-- `cleanup()` - Cleans unused attributes and values on store and update methods on filaments Create and Edit pages.
+- `renderSections(...)` - Returns a fully formatted HTML code for each section,
+- `cleanup(...)` - Cleans unused attributes and values on store and update methods on filaments Create and Edit pages.
 
 <br />
 
 ## Installation
 
-1. You can require the package via composer:
+1. Require the package via composer:
 
 ```bash
 composer require klisica/filament-builder-blocks
 ```
 
-2. And then install it with:
+2. Install it to publish the config file:
 
 ```bash
 php artisan filament-builder-blocks:install
 ```
 
-3. Next, open the `config/filament-builder-blocks.php` file and set the `path` value to root destination where you'll have you PHP classes.
+3. Open the `config/filament-builder-blocks.php` file and set the `path` value to root destination where you'll have you PHP classes (or leave it as it is).
 
+4. Run make section command to create your first example section class with the blade view file:
 
-**Folder structure example:**
+```bash
+php artisan make:section Hero
 ```
-// Creating a root Header.php section, with child section blocks in Header folder.
+
+<br />
+
+## Default folder structure example
+
+Main section `Hero.php` will be displayed in builder dropdown, while child sections `ExampleHero.php` and `AdvancedHero.php` will be displayed as toggle buttons.
+
+```
 ├── app
 │   ├── Sections
 │   │   ├── Header
-│   │   │   ├── DefaultHeader.php
-│   │   │   ├── AcvancedHeader.php
+│   │   │   ├── ExampleHero.php
+│   │   │   ├── AdvancedHero.php
 │   │   │
-│   │   ├── Header.php
+│   │   ├── Hero.php
+```
 
-// Creating layouts for each section block component.
+Creating layouts for each section block component.
+
+```
 ├── resources
 │   ├── views
 │   │   ├── sections
-│   │   │   ├── default-header.blade.php
-│   │   │   ├── advanced-header.blade.php
+│   │   │   ├── example-hero.blade.php
+│   │   │   ├── advanced-hero.blade.php
+```
+
+> [!NOTE]
+> To be sure that on running the `cleanup()` helper your data won't be remove use the **`content.`** prefix on `make` input methods. This is used a handler to avoid storing inputs that you still need to show for descpritive purposes (i.e. Placeholder component). Take the `ExampleHero.php` as example:
+
+```php
+class ExampleHero extends AbstractSectionItemProvider
+{
+    public function getFieldset(): Fieldset
+    {
+        return Fieldset::make($this->getName())
+            ->schema([
+                Placeholder::make('contact_links')->columnSpanFull(),  // Will get cleared out.
+                TextInput::make('content.heading'),    // Will keep on save methods.
+            ]);
+    }
+}
+
+```
+
+Example for adding cleanup on some Filaments Resource Edit Page:
+
+```php
+protected function mutateFormDataBeforeSave(array $data): array
+{
+    return (new FilamentBuilderBlocks)->cleanup($data);
+}
+```
+
+<br />
+
+## Rendering components
+
+1. Build sections in controller:
+
+```php
+$sections = (new FilamentBuilderBlocks)->renderSections(
+    sections: $pages->content,    // Page sections stored in content column
+    wrappingSections: $layout->content    // Layout sections stored in content column (includes the `yield` field),
+    configs: ['page' => $page, 'layout' => $layout]    // Can be whatever you need to bind in `blade.php` files
+);
+
+return view('dynamic')->with('sections', $sections);
+```
+
+2. Display them in a `dynamic.blade.php` (or whatever you name it) file:
+
+```php
+@foreach($sections as $section)
+    {!! $section !!}
+@endforeach
 ```
 
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
