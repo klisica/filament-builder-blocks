@@ -20,7 +20,7 @@ class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasTranslations()
             ->hasCommand(CreateSectionCommand::class)
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
                     ->askToStarRepoOnGitHub('klisica/filament-builder-blocks');

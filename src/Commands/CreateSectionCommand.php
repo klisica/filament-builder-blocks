@@ -5,10 +5,10 @@ namespace KLisica\FilamentBuilderBlocks\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-
 class CreateSectionCommand extends Command
 {
     protected $signature = 'make:section {name}';
+
     protected $description = 'Create a new section with a given name';
 
     protected $files;
@@ -17,11 +17,12 @@ class CreateSectionCommand extends Command
     {
         $name = $this->argument('name');
         $sectionDirectory = config('filament-builder-blocks.path');
-        $componentDirectory = config('filament-builder-blocks.path') . "/$name";
-        $viewDirectory = resource_path('views/sections/' . strtolower($name));
+        $componentDirectory = config('filament-builder-blocks.path')."/$name";
+        $viewDirectory = resource_path('views/sections/'.strtolower($name));
 
         if (File::exists($componentDirectory)) {
             $this->error('Section components already exists!');
+
             return 1;
         }
 
@@ -35,23 +36,24 @@ class CreateSectionCommand extends Command
         $this->createViewFile($name, $viewDirectory);
 
         $this->info('Section created successfully.');
+
         return 0;
     }
 
     protected function createSectionProvider($name, $directory)
     {
-        $stub = File::get(__DIR__ . '/../../resources/stubs/section-provider.stub');
+        $stub = File::get(__DIR__.'/../../resources/stubs/section-provider.stub');
         $stub = str_replace('{{name}}', $name, $stub);
-        $filePath = $directory . "/$name.php";
+        $filePath = $directory."/$name.php";
         File::put($filePath, $stub);
     }
 
     protected function createComponentProvider($name, $directory)
     {
-        $stub = File::get(__DIR__ . '/../../resources/stubs/section-block-provider.stub');
+        $stub = File::get(__DIR__.'/../../resources/stubs/section-block-provider.stub');
         $stub = str_replace('{{name}}', $name, $stub);
-        $stub = str_replace('{{view}}', 'sections.' . strtolower($name) . '.example-' . strtolower($name), $stub);
-        $filePath = $directory . "/Example$name.php";
+        $stub = str_replace('{{view}}', 'sections.'.strtolower($name).'.example-'.strtolower($name), $stub);
+        $filePath = $directory."/Example$name.php";
         File::put($filePath, $stub);
     }
 
@@ -71,8 +73,7 @@ class CreateSectionCommand extends Command
             </section>
             BLADE;
 
-            $filePath = $directory . '/example-' . strtolower($name) . '.blade.php';
-            File::put($filePath, $content);
-        }
-
+        $filePath = $directory.'/example-'.strtolower($name).'.blade.php';
+        File::put($filePath, $content);
+    }
 }
