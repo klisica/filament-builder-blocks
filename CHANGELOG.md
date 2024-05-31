@@ -1,3 +1,205 @@
 # Changelog
 
 All notable changes to `filament-builder-blocks` will be documented in this file.
+
+
+## Version 1.0.0 - 2023-03-10
+
+- Initial release
+
+### Added
+
+- This CHANGELOG file to hopefully serve as an evolving example of a
+  standardized open source project CHANGELOG.
+- `filament-builder-blocks` composer package
+- `filament-builder-blocks` namespace
+- `KLisica\FilamentBuilderBlocks\Abstracts\AbstractSectionProvider` class
+- `KLisica\FilamentBuilderBlocks\Abstracts\AbstractSectionItemProvider` class
+- `KLisica\FilamentBuilderBlocks\Interfaces\SectionBlockInterface` interface
+- `KLisica\FilamentBuilderBlocks\Interfaces\SectionItemInterface` interface
+- `KLisica\FilamentBuilderBlocks\Components\BuilderBlocksInput` class
+- `KLisica\FilamentBuilderBlocks\FilamentBuilderBlocks` class
+- `filament-builder-blocks.php` configuration file
+- `CHANGELOG.md`
+- `composer.json`
+- `LICENSE.md`
+- `README.md`
+- Version number in `composer.json`
+- Version number in `filament-builder-blocks.php`
+- Version number in `README.md`
+- License in `composer.json`
+- License in `LICENSE.md`
+- License in `README.md`
+- Repository in `composer.json`
+- Repository in `README.md`
+- Description in `composer.json`
+- Description in `README.md`
+- Keywords in `composer.json`
+- Keywords in `README.md`
+- Authors in `composer.json`
+- Authors in `README.md`
+- Autoloading section in `composer.json`
+- Autoloading section in `filament-builder-blocks.php`
+- PSR-4 autoloading in `filament-builder-blocks.php`
+- PSR-4 autoloading in `composer.json`
+- `src` directory
+- `tests` directory
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
+- `.gitignore`
+- `.php-cs-fixer.dist.php`
+- `.phpunit.xml`
+- `.styleci.yml`
+- `CHANGELOG.md`
+- `README.md`
+- `composer.json`
+- `LICENSE.md`
+- `phpcs.xml.dist`
+- `phpstan.neon`
+- `phpunit.xml`
+- `src/Abstracts` directory
+- `src/Interfaces` directory
+- `src/Components` directory
+- `tests/Abstracts` directory
+- `tests/Interfaces` directory
+- `tests/Components` directory
