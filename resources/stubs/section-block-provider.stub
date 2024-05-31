@@ -11,7 +11,7 @@ class Example{{name}} extends AbstractSectionItemProvider
 {
     public function __construct()
     {
-        $this->view = 'filament-builder-blocks::{{name}}.example';
+        $this->view = '{{view}}';
         $this->name = 'Example {{name}}';
     }
 
