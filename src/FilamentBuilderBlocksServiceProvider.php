@@ -3,6 +3,7 @@
 namespace KLisica\FilamentBuilderBlocks;
 
 use KLisica\FilamentBuilderBlocks\Commands\CreateSectionCommand;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
