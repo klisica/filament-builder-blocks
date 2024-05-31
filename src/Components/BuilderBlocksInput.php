@@ -8,19 +8,14 @@ use ReflectionClass;
 
 class BuilderBlocksInput extends Builder
 {
-    private $sectionsPath;
-
     /**
      * Retrieves the sections based on the given configuration key and sets the correct component order.
      *
-     * @param  string|null  $sectionsPath  The configuration key to retrieve the sections. Defaults to null.
      * @param  bool|null  $withYieldSection  Whether to yield the sections. Defaults to false.
      * @return Builder The Builder instance with the assigned block elements.
      */
-    public function sections(?string $sectionsPath = null, ?bool $withYieldSection = false): Builder
+    public function sections(?bool $withYieldSection = false): Builder
     {
-        $this->sectionsPath = $sectionsPath;
-
         $componentInstances = [];
         $classes = $this->getSectionClasses();
 
@@ -92,13 +87,11 @@ class BuilderBlocksInput extends Builder
      */
     private function getSectionClasses()
     {
-        $directory = $this->sectionsPath ?? __DIR__.'/../Sections';
-
-        if (! is_dir($directory)) {
+        if (! is_dir(config('filament-builder-blocks.path'))) {
             return [];
         }
 
-        $files = glob($directory.'/*.php');
+        $files = glob(config('filament-builder-blocks.path').'/*.php');
         $classes = [];
 
         foreach ($files as $file) {

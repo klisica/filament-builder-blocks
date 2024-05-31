@@ -16,6 +16,7 @@ class FilamentBuilderBlocksServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('filament-builder-blocks')
+            ->hasConfigFile()
             ->hasTranslations();
     }
 }
