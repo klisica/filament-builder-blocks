@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Sections;
+
+use KLisica\FilamentBuilderBlocks\Abstracts\AbstractSectionProvider;
+
+class {{name}} extends AbstractSectionProvider
+{
+    public function __construct()
+    {
+        $this->key = '{{name}}';
+        $this->name = '{{name}} Section';
+        $this->icon = 'heroicon-s-star';
+        $this->order = 1;
+        $this->tags = [];
+
+        $this->components = [
+            new \App\Sections\{{name}}\Example{{name}},
+        ];
+    }
+}

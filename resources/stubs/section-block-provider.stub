@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Sections\{{name}};
+
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use KLisica\FilamentBuilderBlocks\Abstracts\AbstractSectionItemProvider;
+
+class Example{{name}} extends AbstractSectionItemProvider
+{
+    public function __construct()
+    {
+        $this->view = 'filament-builder-blocks::{{name}}.example';
+        $this->name = 'Example {{name}}';
+    }
+
+    // Get field with inputs for Filament panel.
+    public function getFieldset(): Fieldset
+    {
+        return Fieldset::make($this->getName())
+            ->schema([
+                Toggle::make('content.has_main_heading')
+                    ->label('Use with main heading (<h1>)')
+                    ->default(false),
+
+                Toggle::make('content.is_centered')
+                    ->label('Align to the center')
+                    ->default(false),
+
+                TextInput::make('content.heading')
+                    ->placeholder('Write {{name}} heading here...')
+                    ->required()
+                    ->maxLength(255),
+            ]);
+    }
+}
