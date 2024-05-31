@@ -19,15 +19,16 @@ class FilamentBuilderBlocks
      *
      * @param  string  $name  The name of the BuilderBlocksInput instance.
      * @param  string|null  $addActionLabel  Button text for adding another section to the block. Defaults to null.
+     * @param  array|null  $withTags  The array of tags to include in the sections. Defaults to null.
      * @param  bool|null  $withYieldSection  Whether to yield the section view. Defaults to false.
      * @return mixed The result of calling the `make`, `sections`, and `columnSpanFull` methods on the BuilderBlocksInput instance.
      */
-    public static function make(string $name, ?string $addActionLabel = null, ?bool $withYieldSection = false)
+    public static function make(string $name, ?string $addActionLabel = null, ?array $withTags = [], ?bool $withYieldSection = false)
     {
         $builderInput = new BuilderBlocksInput($name);
 
         return $builderInput->make($name)
-            ->sections(withYieldSection: $withYieldSection) // Plugin block components.
+            ->sections(withTags: $withTags, withYieldSection: $withYieldSection) // Plugin block components.
             ->columnSpanFull()
             ->hiddenLabel()
             ->blockNumbers(true)

@@ -18,6 +18,8 @@ class AbstractSectionProvider implements SectionBlockInterface
 
     public int $order = 1;
 
+    public array $tags = [];
+
     public array $components = [];
 
     public function getKey(): string
@@ -38,6 +40,11 @@ class AbstractSectionProvider implements SectionBlockInterface
     public function getOrder(): int
     {
         return $this->order;
+    }
+
+    public function getTags(): array
+    {
+        return $this->tags;
     }
 
     public function getSectionItems(): Builder\Block

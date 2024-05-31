@@ -18,6 +18,9 @@ interface SectionBlockInterface
     // Order position for Filament panel.
     public function getOrder(): int;
 
+    // Tags to filter sections through resources.
+    public function getTags(): array;
+
     // Get builder block for Filament panel.
     public function getSectionItems(): Builder\Block;
 }

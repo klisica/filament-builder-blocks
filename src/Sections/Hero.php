@@ -12,6 +12,7 @@ class Hero extends AbstractSectionProvider
         $this->name = 'Hero Section';
         $this->icon = 'heroicon-s-star';
         $this->order = 1;
+        $this->tags = ['layouts', 'pages'];
 
         $this->components = [
             new \KLisica\FilamentBuilderBlocks\Sections\Heros\ExampleHero,

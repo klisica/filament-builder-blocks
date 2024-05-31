@@ -11,10 +11,11 @@ class BuilderBlocksInput extends Builder
     /**
      * Retrieves the sections based on the given configuration key and sets the correct component order.
      *
+     * @param  array|null  $withTags  The array of tags to include in the sections. Defaults to null.
      * @param  bool|null  $withYieldSection  Whether to yield the sections. Defaults to false.
      * @return Builder The Builder instance with the assigned block elements.
      */
-    public function sections(?bool $withYieldSection = false): Builder
+    public function sections(?array $withTags = [], ?bool $withYieldSection = false): Builder
     {
         $componentInstances = [];
         $classes = $this->getSectionClasses();
@@ -28,7 +29,20 @@ class BuilderBlocksInput extends Builder
 
             $instance = $reflectionClass->newInstance();
 
-            if (method_exists($instance, 'getOrder') && method_exists($instance, 'getSectionItems')) {
+            if (
+                method_exists($instance, 'getOrder')
+                && method_exists($instance, 'getSectionItems')
+                && method_exists($instance, 'getTags')
+            ) {
+                // Filter by tags.
+                if (count($withTags) > 0) {
+                    if (array_intersect($withTags, $instance->getTags())) {
+                        $componentInstances[] = $instance;
+                    }
+
+                    continue;
+                }
+
                 $componentInstances[] = $instance;
             }
         }
